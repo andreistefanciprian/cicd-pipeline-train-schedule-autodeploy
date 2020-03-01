@@ -58,6 +58,9 @@ pipeline {
                         url: "http://$KUBE_MASTER_IP:8081/",
                         timeout: 30
                     )
+                    println('Status: '+response.status)
+                    println('Response: '+response.content)
+                    
                     if (response.status != 200) {
                         error("Smoke test against canary deployment failed.")
                     }
