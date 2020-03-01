@@ -5,13 +5,7 @@ pipeline {
         CANARY_REPLICAS = 0
     }
     stages {
-        stage('Build and Unit Tests') {
-            steps {
-                echo 'Running build automation'
-                sh './gradlew build --no-daemon'
-                archiveArtifacts artifacts: 'dist/trainSchedule.zip'
-            }
-        }
+
         stage('Build Docker Image') {
             when {
                 branch 'master'
